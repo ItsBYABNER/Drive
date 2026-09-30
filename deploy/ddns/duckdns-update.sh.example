@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+DOMAIN="arca12btp01.duckdns.org"
+TOKEN="${DUCKDNS_TOKEN:?Define DUCKDNS_TOKEN antes de ejecutar este script}"
+IP="$(curl -fsS https://api.ipify.org)"
+
+curl -fsS "https://www.duckdns.org/update?domains=${DOMAIN%%.*}&token=${TOKEN}&ip=${IP}" >/dev/null
